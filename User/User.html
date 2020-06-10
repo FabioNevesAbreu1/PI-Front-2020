@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <link href="/style/front.css"></link>
+  <style>
+  .teste {
+      background-color: #7a3f98;
+      width: 260px;
+      border: 3px solid #7a3f98;
+      padding: 12px;
+      height: 55px;
+      color: #FFF;
+  }
+  /* Style the tab */
+  .tab {
+      overflow: hidden;
+      border: 1px solid #ccc;
+      background-color: #f1f1f1;
+    }
+
+    /* Style the buttons inside the tab */
+    .tab a {
+      background-color: inherit;
+      float: left;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 14px 16px;
+      transition: 0.3s;
+      font-size: 17px;
+    }
+
+    /* Change background color of buttons on hover */
+    .tab a:hover {
+      background-color: #ddd;
+    }
+
+    /* Create an active/current tablink class */
+    .tab a.active {
+      background-color: #ccc;
+    }
+
+    /* Style the tab content */
+    .tabcontent {
+      display: none;
+      padding: 6px 12px;
+      border: 1px solid #ccc;
+      border-top: none;
+    }
+
+    .background-login{
+      background-color: #ccc;
+    }
+
+    .top-10{
+        margin-top: 10px;
+    }
+    .a{
+      background-color: #71398e;
+      color: #FFF;
+    }
+    .b{
+      height: -webkit-fill-available;
+    }
+
+    .nav{
+      padding: 27px;
+    }
+
+    .btn-sair {
+    	background-color:#8745a9;
+    	border-radius:8px;
+    	border:1px solid #000000;
+    	display:inline-block;
+    	cursor:pointer;
+    	color:#ffffff;
+    	font-family:Arial;
+    	font-size:17px;
+    	padding:9px 19px;
+    	text-decoration:none;
+    	text-shadow:0px 1px 0px #000000;
+      margin-left: 30%;
+    }
+    .btn-sair:hover {
+    	background-color:#3d467a;
+    }
+    .btn-sair:active {
+    	position:relative;
+    	top:1px;
+    }
+
+    hr{
+      background-color: #FFF;
+    width: 104%;
+    }
+    .radio .active{
+      background-color: #202648;
+    }
+    .radio{
+      background-color: #8745a9;
+    }
+
+    .btn{
+      color:#FFF !important;
+      border: 1px solid #FFF;
+    }
+    .filtros p{
+          padding: 5px 0px 0px 57px;
+    }
+
+    .row-filtros{
+          margin-top: 8%;
+    }
+    .nav p{
+      font-size: 22px;
+    }
+    .foto{
+      margin-top: 2%;
+      margin-left: 2%;
+    }
+
+    </style>
+</head>
+<body>
+
+
+      <div class='row b'>
+        <div class='col-md-3 a'>
+          <div class='nav'>
+            <p></p>
+            <button class='btn-sair' >Sair</button>
+          </div>
+          <hr>
+          <div class='row row-filtros'>
+            <div class='col-md-4 filtros'>
+              <p>Filtros: </p>
+            </div>
+            <div class='col-md-8'>
+              <div class="btn-group btn-group-toggle radio" data-toggle="buttons">
+                <label class="btn btn-radio ">
+                  <input type="radio" name="filtro" value='Neighborhood' autocomplete="off" checked> Bairro
+                </label>
+                <label class="btn btn-radio active">
+                  <input type="radio" name="filtro" value='City' autocomplete="off"> Cidade
+                </label>
+              </div>
+            </div>
+          </div>
+
+          </div>
+          <div class='col-md-8'>
+            <div class='row cards'>
+
+
+
+            </div>
+          </div>
+          <div class='col-md-1'></div>
+        </div>
+
+
+      </div>
+
+
+      <div class="modal fade" id="myModal" role="dialog">
+          <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Instituicao</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+              <div class="modal-body">
+                <textarea name='descricao' placeholder="Escreva aqui o que você quer doar"></textarea>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" name='enviar'>Enviar</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <script src="script/User.js?V1.0.0" type="text/javascript"></script>
+        <script src="script/moment.js" type="text/javascript"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <link href="/style/front.css"></link>
+  <style>
+  .teste {
+      background-color: lightgrey;
+      width: 204px;
+      border: 3px solid green;
+      padding: 12px;
+      margin: 20px;
+      height: 55px;
+  }
+  /* Style the tab */
+  .tab {
+      overflow: hidden;
+      border: 1px solid #ccc;
+      background-color: #f1f1f1;
+    }
+
+    /* Style the buttons inside the tab */
+    .tab a {
+      background-color: inherit;
+      float: left;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 14px 16px;
+      transition: 0.3s;
+      font-size: 17px;
+    }
+
+    /* Change background color of buttons on hover */
+    .tab a:hover {
+      background-color: #ddd;
+    }
+
+    /* Create an active/current tablink class */
+    .tab a.active {
+      background-color: #ccc;
+    }
+
+    /* Style the tab content */
+    .tabcontent {
+      display: none;
+      padding: 6px 12px;
+      border: 1px solid #ccc;
+      border-top: none;
+    }
+
+    .background-login{
+      background-color: #ccc;
+    }
+
+    .top-10{
+        margin-top: 10px;
+    }
+
+    textarea {
+        resize: none;
+    }
+
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">aa <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Features</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Pricing</a>
+            </li>
+          </ul>
+          <input type='hidden' name='info'>
+        </div>
+      </nav>
+
+      <div class='row'>
+          <div class='col-md-6'>
+            <div class='img'>
+              <img id="imgElem"></img>
+            </div>
+            
+            <input type='file' onchange="encodeImageFileAsURL(this)" >
+          </div>
+          <div class='col-md-6' style="margin-top: 30px;">
+              <textarea name="" cols="100" rows="30"></textarea><br>
+              <button name='btnUser' >Ver Doações</button>
+        </div>
+      </div>
+
+
+      <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Doações</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+        <script src="script/Instituicao.js?V=1.0.1" type="text/javascript"></script>
+        <script src="script/moment.js" type="text/javascript"></script>
+        <script >
+        function encodeImageFileAsURL(element) {
+              var file = element.files[0];
+              var reader = new FileReader();
+              reader.onloadend = function() {
+                var settings = {
+                  "url": "http://localhost:3000/foto",
+                    "method": "POST",
+                    "timeout": 0,
+                    "headers": {
+                      "Content-Type": "application/json",
+                      "token": localStorage.getItem('token')
+                    },
+                    "data": JSON.stringify({"source": reader.result})
+                  };
+
+                $.ajax(settings).done(function (response) {
+                  console.log(response);
+                  renderFoto()
+                });
+                }
+              reader.readAsDataURL(file);
+          }
+          
+          renderFoto = () => {
+            var settings = {
+                  "url": "http://localhost:3000/getFoto",
+                    "method": "GET",
+                    "timeout": 0,
+                    "headers": {
+                      "Content-Type": "application/json",
+                      "token": localStorage.getItem('token')
+                    }
+                  };
+
+                $.ajax(settings).done(function (response) {
+
+                  var baseStr64 = response;
+                  imgElem.setAttribute('src', "data:image/jpg;base64," + baseStr64);
+                });
+          }
+          renderFoto()
+        </script>
+</body>
+</html>
