@@ -1,7 +1,6 @@
 $(document).ready(function(){
     var user = {
         init: function(){
-          this.ListIntitution()
           this.setNome()
           this.filtro()
         },
@@ -28,13 +27,13 @@ $(document).ready(function(){
             $.ajax({
                 "url": "http://localhost:3000/getName",
                 "method": "GET",
-                "timeout": 0,
+                "timeout": 0, 
                 "headers": {
                   "token": this.token,
                   "Content-Type": "application/json"
                 },
                 "success": (content) => {
-                    $('.col-md-3.a .nav p').html(`Bem vindo, ${content}`)
+                    $('.col-md-3.a .nav p').html(`Bem vindo(a), ${content}`)
                 },
               })
         },
@@ -62,6 +61,7 @@ $(document).ready(function(){
         instituicaoActive: function(){
           $('.cards .teste').on('click', (event) => {
             var info = $(event.target).attr('data-info')
+            var infoParsed = JSON.parse(info)
             $('#myModal').modal()
             $('[name="descricao"]').attr('data-info', info)
             $('[name="enviar"]').on('click', () => {
@@ -94,12 +94,15 @@ $(document).ready(function(){
               })
             })
 
+            $('.modal-title').html(`Instituição: ${infoParsed.Name}`)
+
           })
         },
         filtro: () => {
-          $('[name="filtro"]').off('click').on('click', (e) => {
 
-              var valor = $(e.target).val()
+          $('.btn-radio').off('click').on('click', (e) => {
+
+              var valor = $(e.target).find('input').val()
 
               var settings = {
                 "url": "http://localhost:3000/filtro/" + valor,
@@ -114,13 +117,14 @@ $(document).ready(function(){
                 user.preencheTabela(response)
               });
           })
+
+          $('.btn-radio.active').trigger('click')
         }
 
     }
-    $('[name="filtro"][value="City"]').trigger('click')
     user.init()
     $('.btn-sair').on('click', () => {
-      window.location = '/PI-Front'
+      window.location = '/PI-Front-2020'
     })
 
 })

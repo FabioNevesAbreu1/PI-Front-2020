@@ -23,9 +23,9 @@ $(document).ready(function(){
                         }else{
                             window.localStorage.setItem('token', result.token) // passa o token recebido para o local storage
                             if(result.type == 'User'){// decide se envia para a rota de usuario ou de instituição
-                                window.location = '/PI-Front/User/User.html'
+                                window.location = '/PI-Front-2020/User/User.html'
                             }else{
-                                window.location = '/PI-Front/Instituicao/Instituicao.html'
+                                window.location = '/PI-Front-2020/Instituicao/Instituicao.html'
                             }
 
                         }
@@ -39,7 +39,7 @@ $(document).ready(function(){
        },
        cadastrar: function(){
           $('[name="Cadastro"]').on('click', () => {
-              window.location = '/PI-Front/cadastro2.html'
+              window.location = '/PI-Front-2020/cadastro2.html'
           })
        }
 

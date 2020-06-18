@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Instituição</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -66,6 +66,66 @@
     textarea {
         resize: none;
     }
+    .navbar.navbar-expand-lg{
+      background: linear-gradient(to left, #8745a9, #881a46) !important;
+    }
+
+    .navbar-nav a{
+      color: #FFF !important;
+    }
+
+    #imgElem{
+      padding: 35px;
+    }
+
+    .painel-md{
+      margin-top: 30px;
+    }
+
+    .painel{
+      border: 1px solid #881a46;
+      height: 770px;
+      overflow: auto;
+    }
+
+    .nome{
+      width: 160px;
+    }
+
+    [type='file']{
+      padding-left: 35px;
+    }
+
+    .info{
+      padding: 34px;
+    }
+
+    .thead{
+      background-color: #881a46;
+      color: white;
+    }
+
+    .btn-sair {
+      background-color: #881a47 !important;
+          border-radius: 8px;
+          border: 1px solid #da95da;
+          display: inline-block;
+          cursor: pointer;
+          color: #ffffff;
+          font-family: Arial;
+          font-size: 17px;
+          padding: 1px 10px;
+          text-decoration: none;
+          text-shadow: 0px 1px 0px #000000;
+    }
+    .btn-sair:hover {
+    	background-color:#9a61b8;
+    }
+    .btn-sair:active {
+    	position:relative;
+    	top:1px;
+    }
+
 
     </style>
 </head>
@@ -79,30 +139,46 @@
         <div class="collapse navbar-collapse" id="navbarText">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#">aa <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="#"> <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Features</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Pricing</a>
-            </li>
+            <div>
+
+            </div>
           </ul>
           <input type='hidden' name='info'>
         </div>
+        <button class='btn-sair' >Sair</button>
       </nav>
-
+<!-- <button name='btnUser' >Ver Doações</button> -->
       <div class='row'>
           <div class='col-md-6'>
             <div class='img'>
-              <img id="imgElem"></img>
+              <img id="imgElem"></img></br>
+                <input type='file' onchange="encodeImageFileAsURL(this)" >
             </div>
-            
-            <input type='file' onchange="encodeImageFileAsURL(this)" >
+
+
+
+
           </div>
-          <div class='col-md-6' style="margin-top: 30px;">
-              <textarea name="" cols="100" rows="30"></textarea><br>
-              <button name='btnUser' >Ver Doações</button>
+          <div class='col-md-6'>
+            <div class='row'>
+              <div class='col-md-8 painel-md'>
+                <div class='painel'>
+                  <table class="table">
+                    <thead class="thead">
+                      <tr>
+                        <th scope="col" class='nome'>Doador</th>
+                        <th scope="col">Descrição</th>
+                        <th scope="col"></th>
+                      </tr>
+                    </thead>
+                    <tbody class='tbody-doacao'>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
         </div>
       </div>
 
@@ -117,10 +193,10 @@
               <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
-                
+
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
             </div>
           </div>
 
@@ -128,7 +204,7 @@
       </div>
 
 
-        <script src="script/Instituicao.js?V=1.0.1" type="text/javascript"></script>
+        <script src="script/Instituicao.js?V=1.0.3" type="text/javascript"></script>
         <script src="script/moment.js" type="text/javascript"></script>
         <script >
         function encodeImageFileAsURL(element) {
@@ -153,7 +229,7 @@
                 }
               reader.readAsDataURL(file);
           }
-          
+
           renderFoto = () => {
             var settings = {
                   "url": "http://localhost:3000/getFoto",

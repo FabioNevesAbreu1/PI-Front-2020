@@ -38,7 +38,7 @@ $(document).ready(function(){
              };
 
              $.ajax(settings).done(function (response) {
-               window.location = '/PI-Front'
+               window.location = '/PI-Front-2020'
              });
           }else{
              obj['CNPJ'] = $('[name="CPF"]').val()
@@ -54,7 +54,7 @@ $(document).ready(function(){
              };
 
              $.ajax(settings).done(function (response) {
-               window.location = '/PI-Front'
+               window.location = '/PI-Front-2020'
              });
           }
         }
@@ -66,7 +66,7 @@ $(document).ready(function(){
 
 
    $('.btn-voltar').on('click', () => {
-     window.location = '/PI-Front'
+     window.location = '/PI-Front-2020'
    })
 
    front.Cadastro()

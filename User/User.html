@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Usuário</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -86,7 +86,7 @@
     	padding:9px 19px;
     	text-decoration:none;
     	text-shadow:0px 1px 0px #000000;
-      margin-left: 30%;
+      margin-left: auto;
     }
     .btn-sair:hover {
     	background-color:#3d467a;
@@ -107,7 +107,7 @@
       background-color: #8745a9;
     }
 
-    .btn{
+    .row-filtros .btn{
       color:#FFF !important;
       border: 1px solid #FFF;
     }
@@ -125,6 +125,57 @@
       margin-top: 2%;
       margin-left: 2%;
     }
+
+    #myModal textarea{
+      width: 100%;
+      resize: none
+    }
+
+    [name='enviar'] {
+    	background-color:#72398e;
+    	border-radius:8px;
+    	border:1px solid #8f398f;
+    	display:inline-block;
+    	cursor:pointer;
+    	color:#ffffff;
+    	font-family:Arial;
+      font-size: 16px;
+      padding: 4px 11px;
+    	text-decoration:none;
+    	text-shadow:0px 1px 0px #000000;
+    }
+    [name='enviar']:hover {
+    	background-color:#9a61b8 !important;
+      color: #FFFFFF;
+    }
+    [name='enviar']:active {
+    	position:relative;
+    	top:1px;
+    }
+
+    [data-dismiss="modal"] {
+      background-color:#72398e;
+      border-radius:8px;
+      border:1px solid #8f398f;
+      display:inline-block;
+      cursor:pointer;
+      color:#ffffff;
+      font-family:Arial;
+      font-size: 16px;
+      padding: 4px 11px;
+      text-decoration:none;
+      text-shadow:0px 1px 0px #000000;
+    }
+    [data-dismiss="modal"]:hover {
+      background-color:#9a61b8 !important;
+      color: #FFFFFF;
+    }
+    [data-dismiss="modal"]:active {
+      position:relative;
+      top:1px;
+    }
+
+
 
     </style>
 </head>
@@ -144,12 +195,13 @@
             </div>
             <div class='col-md-8'>
               <div class="btn-group btn-group-toggle radio" data-toggle="buttons">
-                <label class="btn btn-radio ">
-                  <input type="radio" name="filtro" value='Neighborhood' autocomplete="off" checked> Bairro
-                </label>
                 <label class="btn btn-radio active">
-                  <input type="radio" name="filtro" value='City' autocomplete="off"> Cidade
+                  <input type="radio" name="filtro" value='City' autocomplete="off" checked> Cidade
                 </label>
+                <label class="btn btn-radio ">
+                  <input type="radio" name="filtro" value='Neighborhood' autocomplete="off" > Bairro
+                </label>
+
               </div>
             </div>
           </div>
@@ -157,9 +209,6 @@
           </div>
           <div class='col-md-8'>
             <div class='row cards'>
-
-
-
             </div>
           </div>
           <div class='col-md-1'></div>
@@ -175,26 +224,55 @@
             <!-- Modal content-->
             <div class="modal-content">
               <div class="modal-header">
-                <h4 class="modal-title">Instituicao</h4>
+                <h4 class="modal-title">Instituicao: </h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
               </div>
               <div class="modal-body">
                 <textarea name='descricao' placeholder="Escreva aqui o que você quer doar"></textarea>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-default" name='enviar'>Enviar</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn" name='enviar'>Enviar</button>
+                <button type="button" class="btn" data-dismiss="modal">Fechar</button>
               </div>
             </div>
 
           </div>
         </div>
 
-        <script src="script/User.js?V1.0.0" type="text/javascript"></script>
+
+        <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Instituicao</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <textarea name='descricao' placeholder="Escreva aqui o que você quer doar"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" name='enviar'>Enviar</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+        <script src="script/User.js?V1.0.3" type="text/javascript"></script>
         <script src="script/moment.js" type="text/javascript"></script>
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
 </body>
 </html>
